@@ -10,6 +10,7 @@ import java.util.Iterator;
 
 public class ArrayListTest {
 
+
     private ArrayList<String> list;
 
     @Before
@@ -210,12 +211,6 @@ public class ArrayListTest {
         while (itr.hasNext()) {
             Assert.assertEquals(list.get(i++), itr.next());
         }
-    }
-
-    @Test
-    public void testListIterator() throws Exception {
-
-
     }
 
     @Test
