@@ -59,7 +59,7 @@ public class ArrayList<E> implements CustomList<E> {
 
     @Override
     public boolean contains(Object o) {
-        return indexOf(o) > -1;
+        return indexOf(o) != -1;
     }
 
     @Override

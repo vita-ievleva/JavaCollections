@@ -1,13 +1,12 @@
 package collectionsImpl;
 
-
 import interfaces.CustomList;
 
 
-public class ArrayListTest extends ListTests {
+public class LinkedListTest extends ListTests {
 
     @Override
     CustomList getList() {
-        return new ArrayList<>();
+        return new LinkedList<>();
     }
 }
