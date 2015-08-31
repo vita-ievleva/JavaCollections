@@ -66,10 +66,10 @@ public class LinkedList<E> implements CustomList<E> {
         return result;
     }
 
-    public E set(int index, E element) {
+    public E set(int index, E newElement) {
         Node<E> nodeFoundByIndex = searchNode(index);
         E item = nodeFoundByIndex.value;
-        nodeFoundByIndex.value = element;
+        nodeFoundByIndex.value = newElement;
         return item;
     }
 
@@ -166,9 +166,17 @@ public class LinkedList<E> implements CustomList<E> {
 
     private Node<E> searchNode(int index) {
         isIndexValid(index);
+        Node<E> temp;
 
-        Node<E> temp = first;
+        if (index > size / 2) {
+            temp = last;
+            for (int i = size - 1; i > index; i--) {
+                temp = temp.prev;
+            }
+            return temp;
+        }
 
+        temp = first;
         for (int i = 0; i < index; i++) {
             temp = temp.next;
         }
@@ -199,18 +207,10 @@ public class LinkedList<E> implements CustomList<E> {
         public E next() {
             if (size == 0) {
                 throw new NoSuchElementException();
-
-            } else if (currentIndex == 0) {
-                lastReturned = first;
-
-            } else if (currentIndex == size - 1) {
-                lastReturned = last;
-
-            } else {
-                lastReturned = searchNode(currentIndex);
             }
-
+            lastReturned = searchNode(currentIndex);
             currentIndex++;
+
             return (E) lastReturned.value;
         }
 

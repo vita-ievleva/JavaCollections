@@ -90,7 +90,7 @@ public class ArrayList<E> implements CustomList<E> {
     @Override
     public E remove(int index) {
         isIndexValid(index); // if index is valid - remove this element
-
+        @SuppressWarnings("unchecked")
         E removedElement = (E) array[index];
 
         if (index == 0) {
@@ -128,7 +128,7 @@ public class ArrayList<E> implements CustomList<E> {
     @Override
     public E set(int index, E element) {
         isIndexValid(index);
-
+        @SuppressWarnings("unchecked")
         E elementToChange = (E) array[index];
         array[index] = element;
 
@@ -191,8 +191,9 @@ public class ArrayList<E> implements CustomList<E> {
     }
 
     private void isIndexValid(int index) {
-        if (index < 0 || index >= size)
+        if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
+        }
 
     }
 
