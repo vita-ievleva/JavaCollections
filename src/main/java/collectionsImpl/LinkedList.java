@@ -160,8 +160,15 @@ public class LinkedList<E> implements CustomList<E> {
     }
 
     public void clear() {
-        first = last = null;
+        for (Node<E> i = first; i != null; ) { // unlink nodes from first till the end of list
+            Node<E> temp = i.next; // hold link to the next node
+            i.value = null;
+            i.next = null;
+            i.prev = null;
+            i = temp; // go to next node to unlink its values
+        }
         size = 0;
+        first = last = null;
     }
 
     private Node<E> searchNode(int index) {
