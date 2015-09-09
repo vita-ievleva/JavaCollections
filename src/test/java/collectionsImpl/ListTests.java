@@ -177,7 +177,19 @@ public abstract class ListTests {
     @Test
     public void testGet() throws Exception {
         list.add(0, "FirstElement");
+        list.add(1, "SecondElement");
+        list.add(2, "ThirdElement");
+
         assertEquals(list.get(0), "FirstElement");
+        assertEquals(list.get(1), "SecondElement");
+        assertEquals(list.get(2), "ThirdElement");
+
+        list.add(3, "FourthElement");
+
+        assertEquals(list.get(0), "FirstElement");
+        assertEquals(list.get(1), "SecondElement");
+        assertEquals(list.get(2), "ThirdElement");
+        assertEquals(list.get(3), "FourthElement");
     }
 
     @Test
