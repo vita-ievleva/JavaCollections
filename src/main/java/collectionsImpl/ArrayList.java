@@ -20,11 +20,9 @@ public class ArrayList<E> implements CustomList<E> {
             this.array = new Object[capacity];
         } else if (capacity == 0) {
             this.array = new Object[]{};
-
         } else {
             throw new RuntimeException("Capacity should be >= 0, but was " + capacity);
         }
-
     }
 
     public ArrayList() {
@@ -52,8 +50,9 @@ public class ArrayList<E> implements CustomList<E> {
 
     @Override
     public void clear() {
-        for (int i = 0; i < size; i++)
-            array[i] = null; // give it to GC
+        for (int i = 0; i < size; i++) {
+            array[i] = null;
+        }
         size = 0;
     }
 
@@ -176,7 +175,6 @@ public class ArrayList<E> implements CustomList<E> {
             if (currentIndex == size) {
                 throw new NoSuchElementException();
             }
-
             return (E) array[currentIndex++];
         }
 
@@ -185,7 +183,6 @@ public class ArrayList<E> implements CustomList<E> {
             if (currentIndex == 0) {
                 throw new IllegalStateException();
             }
-
             ArrayList.this.remove(--currentIndex);
         }
     }
@@ -194,7 +191,6 @@ public class ArrayList<E> implements CustomList<E> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-
     }
 
 }
